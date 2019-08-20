@@ -1,0 +1,12 @@
+<p></p>
+<h4>{{movie.title}}</h4>
+
+<img src="http://image.tmdb.org/t/p/w200/{{movie.poster_path}}" alt="" style="margin-top:20px; margin-bottom: 20px;">
+
+<p>
+  {{ movie.overview }}
+</p>
+
+<p>Rating: <b>{{movie.vote_average}}</b>/10 <img src="../../../assets/images/star.svg" alt=""></p>
+
+<a class="btn btn-primary text-white" href="/movies">Back</a>

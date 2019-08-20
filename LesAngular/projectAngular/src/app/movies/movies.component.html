@@ -1,0 +1,79 @@
+<div class="hero d-flex align-items-center">
+<ngb-tabset class="nav-fill">
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Popular Movies</b></ng-template>
+      <ng-template ngbTabContent>
+          <table class="table table-responsive table-fixed">
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Poster
+              </th>
+              <th>
+                Release date
+              </th>
+              <th width="100px">
+                Rating
+              </th>
+              <th>
+                Actions
+              </th>
+              
+            </tr>
+            <tr *ngFor="let movie of popular">
+              <td><b>{{movie.title}}</b></td>
+              <td>
+                <img src="http://image.tmdb.org/t/p/w200{{movie.poster_path}}" alt="">
+              </td>
+              <td>{{movie.release_date}}</td>
+              <td>
+                <b>{{movie.vote_average}}</b>/10 <img src="../../../assets/images/star.svg" alt="">
+              </td>
+              <td><a class="btn btn-primary text-white" (click)="getInfo(movie.id)">More info</a></td>
+
+              <td><a class="btn btn-primary text-white" (click)="orderTicket(movie.id)">Order ticket</a></td>
+            </tr>
+          </table>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Upcoming releases</b></ng-template>
+      <ng-template ngbTabContent>
+          <table class="table table-responsive table-fixed">
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Poster
+                </th>
+                <th>
+                  Release date
+                </th>
+                <th>
+                  Rating
+                </th>
+                <th>
+                  Actions
+                </th>
+                
+              </tr>
+              <tr *ngFor="let movie of upcoming">
+                <td><b>{{movie.title}}</b></td>
+                <td>
+                  <img src="http://image.tmdb.org/t/p/w200{{movie.poster_path}}" alt="">
+                </td>
+                <td>{{movie.release_date}}</td>
+                <td>
+                  <b>{{movie.vote_average}}</b> <img src="../../../assets/images/star.svg" alt="">
+                </td>
+                <td><a class="btn btn-primary text-white" (click)="getInfo(movie.id)">More info</a></td>
+              </tr>
+            </table>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
+

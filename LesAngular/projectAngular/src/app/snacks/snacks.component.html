@@ -1,0 +1,141 @@
+<div class="hero d-flex align-items-center">
+  <div class="container d-block">
+      <div class="row d-flex">
+              <div class="card-body p-4">
+                  <h2 class="mt-2 mb-4 pb-2 text-center">
+                      <span class="font-weight-bold">Snacks</span>
+                  </h2>
+                  <hr/>
+                  <div class="form-group mb-3 text-center">
+                    <h4 class="mt-2 mb-4 pb-2 text-center">
+                      <span class="font-weight-bold">Drinks</span>
+                    </h4>
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>
+                                  Name
+                                </th>
+                                <th>
+                                  Size
+                                </th>
+                                <th>
+                                  Price
+                                </th>
+                                <th>
+                                  Actions
+                                </th>    
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let drink  of (drinks$ |async)">
+                                <td><b>{{drink.name}}</b></td>
+                                <td><b>{{drink.size}}</b></td>
+                                <td><b>{{drink.price}}</b></td>
+                                <td>
+                                  <button type="button" class="btn btn-primary mr-2 " (click)="updateDrink(drink._id)">Update</button>
+                                  <button type="button" class="btn btn-danger" (click)="deleteDrink(drink._id)">Delete</button>
+                                </td>
+                              </tr>    
+                            </tbody>
+                          </table>
+                  </div>
+                  <div>
+                    <h3>Add a drink</h3>
+                    <div class="container">
+                      <form #drinkForm="ngForm" (submit)="addDrink(drinkForm.value)">
+                        <div class="form-group">
+                          <label for="name">Name drink</label>
+                          <input type="text" id="name" class="form-control"
+                                 name="name"
+                                 #myName="ngModel"
+                                 [(ngModel)]="drink.name">
+                        </div>
+                        <div class="form-group">
+                          <label for="size">Size</label>
+                          <input type="text" id="size" class="form-control"
+                                 required
+                                 name="size"
+                                 #mySize="ngModel"
+                                 [(ngModel)]="drink.size">
+                        </div>
+                        <div class="form-group">
+                          <label for="price">Price</label>
+                          <input type="number" id="price" class="form-control"
+                                 required
+                                 name="price"
+                                 #myPrice="ngModel"
+                                 [(ngModel)]="drink.price">
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">
+                          Add
+                        </button>
+                        <a href="snacks" class="btn btn-danger">
+                            Cancel
+                          </a>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="form-group mb-3 text-center">
+                    <h4 class="mt-2 mb-4 pb-2 text-center">
+                      <span class="font-weight-bold">Food</span>
+                    </h4>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Name
+                            </th>
+                            <th>
+                              Price
+                            </th>
+                            <th>
+                              Actions
+                            </th>    
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item  of (food$ |async)">
+                            <td><b>{{item.name}}</b></td>
+                            <td><b>{{item.price}}</b></td>
+                            <td>
+                              <button type="button" class="btn btn-primary mr-2" (click)="updateFood(item._id)">Update</button>
+                              <button type="button" class="btn btn-danger" (click)="deleteFood(item._id)">Delete</button>
+                            </td>
+                          </tr>    
+                        </tbody>
+                      </table>
+                    <hr/>
+                  </div>
+                  <div>
+                    <h3>Add food</h3>
+                    <div class="container">
+                      <form #foodForm="ngForm" (submit)="addFood(foodForm.value)">
+                        <div class="form-group">
+                          <label for="name">Name food</label>
+                          <input type="text" id="name" class="form-control"
+                                 name="name"
+                                 #myName="ngModel"
+                                 [(ngModel)]="food.name">
+                        </div>
+                        <div class="form-group">
+                          <label for="price">Price</label>
+                          <input type="number" id="price" class="form-control"
+                                 required
+                                 name="price"
+                                 #myPrice="ngModel"
+                                 [(ngModel)]="food.price">
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">
+                          Add
+                        </button>
+                        <a href="snacks" class="btn btn-danger">
+                            Cancel
+                          </a>
+                      </form>
+                  </div>  
+                </div>
+              </div>
+      </div>
+  </div>
+</div>

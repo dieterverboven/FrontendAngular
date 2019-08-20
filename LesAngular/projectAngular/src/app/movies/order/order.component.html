@@ -1,0 +1,81 @@
+<div class="hero d-flex align-items-center">
+  <div class="container d-block">
+    <div class="row d-flex">
+      <div *ngIf="movie != null" class="card-body p-4">
+        <h4 class="mt-2 mb-4 pb-2 text-center">
+          <span class="font-weight-bold">Order for {{movie.title}}</span>
+        </h4>
+        <h5>Small overview</h5>
+        <img src="http://image.tmdb.org/t/p/w200/{{movie.poster_path}}" alt="" style="margin-top:20px; margin-bottom: 20px;">
+        <p>
+          {{ movie.overview }}
+        </p>
+        <h5>Add snacks to order:</h5>
+        <div>
+          <h6>Drinks:</h6>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Size
+                    </th>
+                    <th>
+                      Price
+                    </th>
+                    <th>
+                      Actions
+                    </th>    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let drink  of (drinks$ |async)">
+                    <td><b>{{drink.name}}</b></td>
+                    <td><b>{{drink.size}}</b></td>
+                    <td><b>{{drink.price}}</b></td>
+                    <td>
+                      <button type="button" class="btn btn-success mr-2 " (click)="addDrinkToOrder(drink._id)">+</button>
+                    </td>
+                  </tr>    
+                </tbody>
+              </table>
+              <h6>Food:</h6>
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Price
+                      </th>
+                      <th>
+                        Actions
+                      </th>    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item  of (food$ |async)">
+                      <td><b>{{item.name}}</b></td>
+                      <td><b>{{item.price}}</b></td>
+                      <td>
+                          <button type="button" class="btn btn-success mr-2 " (click)="addFoodToOrder(item._id)">+</button>
+                      </td>
+                    </tr>    
+                  </tbody>
+                </table>
+        </div>
+        <a class="btn btn-danger text-white" href="/movies">Cancel</a>
+      </div>
+      <div *ngIf="movie == null" class="card-body p-4">
+          <h4 class="mt-2 mb-4 pb-2 text-center">
+            <span class="font-weight-bold">No movie with this ID!</span>
+          </h4>
+          
+          <a class="btn btn-danger text-white" href="/movies">Back</a>
+        </div>
+    </div>
+  </div>
+</div>
