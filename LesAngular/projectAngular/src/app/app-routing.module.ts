@@ -5,6 +5,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { SnacksComponent } from './snacks/snacks.component';
 import { InfoComponent } from './movies/info/info.component';
 import { OrderComponent } from './movies/order/order.component';
+import { TicketsComponent } from './movies/tickets/tickets.component';
 import { LoginComponent } from './login/login.component';
 import { UpdateDrinkComponent } from './snacks/update-drink/update-drink.component';
 import { UpdateFoodComponent } from './snacks/update-food/update-food.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'drink/:id', component: UpdateDrinkComponent},
   {path: 'food/:id', component: UpdateFoodComponent},
+  {path: 'tickets', component: TicketsComponent},
 
   // Homepage doorverwijzen naar home.
   {path: '', redirectTo: 'home', pathMatch: 'full'},

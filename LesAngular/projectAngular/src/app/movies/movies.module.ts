@@ -4,6 +4,7 @@ import { MoviesComponent } from './movies.component';
 import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoComponent } from './info/info.component';
 import { OrderComponent } from './order/order.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { OrderComponent } from './order/order.component';
     NgbTabsetModule
     
   ],
-  declarations: [MoviesComponent, InfoComponent, OrderComponent]
+  declarations: [MoviesComponent, InfoComponent, OrderComponent, TicketsComponent]
 })
 export class MoviesModule { }

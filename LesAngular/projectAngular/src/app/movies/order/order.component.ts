@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 import { MoviesService } from '../../services/movies.service';
 import { DrinksService } from "../../services/drinks.service";
 import { FoodService } from "../../services/food.service";
@@ -16,10 +16,11 @@ export class OrderComponent implements OnInit {
   movie: Object;
   drinks$: Observable<any>;
   food$: Observable<any>;
-  orderDrinks$: Observable<any>[];
-  orderFood$: Observable<any>;
+  tickets: Object[] = [];
 
   constructor(private route: ActivatedRoute, private movieService: MoviesService, private router: Router, private drinksService: DrinksService, private foodService: FoodService) { }
+
+  
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -47,11 +48,22 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  addDrinkToOrder(drinkId){
-    
+  readLocalStorage(){
+    const tickets = localStorage.getItem('tickets');
+    if (tickets !== null) {
+      this.tickets = JSON.parse(tickets);
+    }  else {
+      this.writeLocalStorage();
+    }
   }
 
-  addFoodToOrder(foodId){
+  orderTicket(movieId){
+    this.readLocalStorage();
+    this.tickets.push(movieId);
+    this.writeLocalStorage();
+  }
 
+  writeLocalStorage(){
+    localStorage.setItem('tickets', JSON.stringify(this.tickets));
   }
 }

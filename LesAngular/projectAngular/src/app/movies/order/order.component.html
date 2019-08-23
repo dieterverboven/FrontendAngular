@@ -10,24 +10,23 @@
         <p>
           {{ movie.overview }}
         </p>
-        <h5>Add snacks to order:</h5>
+        <a class="btn btn-success text-white mr-2" (click)="orderTicket(movie.id)">Order</a>
+        <a class="btn btn-danger text-white" href="/movies">Cancel</a>
+        <p></p>
+        <h5>Possible snacks at the theatre:</h5>
         <div>
-          <h6>Drinks:</h6>
             <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>
-                      Name
+                      Drinks
                     </th>
                     <th>
                       Size
                     </th>
                     <th>
                       Price
-                    </th>
-                    <th>
-                      Actions
-                    </th>    
+                    </th>   
                   </tr>
                 </thead>
                 <tbody>
@@ -35,39 +34,29 @@
                     <td><b>{{drink.name}}</b></td>
                     <td><b>{{drink.size}}</b></td>
                     <td><b>{{drink.price}}</b></td>
-                    <td>
-                      <button type="button" class="btn btn-success mr-2 " (click)="addDrinkToOrder(drink._id)">+</button>
-                    </td>
                   </tr>    
                 </tbody>
               </table>
-              <h6>Food:</h6>
               <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>
-                        Name
+                        Food
                       </th>
                       <th>
                         Price
                       </th>
-                      <th>
-                        Actions
-                      </th>    
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let item  of (food$ |async)">
                       <td><b>{{item.name}}</b></td>
                       <td><b>{{item.price}}</b></td>
-                      <td>
-                          <button type="button" class="btn btn-success mr-2 " (click)="addFoodToOrder(item._id)">+</button>
-                      </td>
                     </tr>    
                   </tbody>
                 </table>
         </div>
-        <a class="btn btn-danger text-white" href="/movies">Cancel</a>
+        
       </div>
       <div *ngIf="movie == null" class="card-body p-4">
           <h4 class="mt-2 mb-4 pb-2 text-center">

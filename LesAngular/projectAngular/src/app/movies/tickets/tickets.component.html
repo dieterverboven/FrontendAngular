@@ -1,0 +1,51 @@
+<div class="hero d-flex align-items-center">
+  <div class="container d-block">
+    <div class="row d-flex">
+      <div *ngIf="tickets.length > 0" class="card-body p-4">
+        <h4 class="mt-2 mb-4 pb-2 text-center">
+          <span class="font-weight-bold">Tickets you ordered:</span>
+        </h4>
+        <p>{{item.title}}</p>
+        <table class="table table-responsive table-fixed">
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Poster
+            </th>
+            <th>
+              Release date
+            </th>
+            <th width="100px">
+              Rating
+            </th>
+            <th>
+              Actions
+            </th>
+            
+          </tr>
+          <tr *ngFor="let item of movies">
+            <td><b>{{item.title}}</b></td>
+            <td>
+              <img src="http://image.tmdb.org/t/p/w200{{movie.poster_path}}" alt="">
+            </td>
+            <td>{{item.release_date}}</td>
+            <td>
+              <b>{{item.vote_average}}</b>/10 <img src="../../../assets/images/star.svg" alt="">
+            </td>
+            <td><a class="btn btn-primary text-white" (click)="getInfo(item.id)">More info</a></td>
+          </tr>
+        </table>
+        
+      </div>
+      <div *ngIf="tickets.length == 0" class="card-body p-4 text-center">
+          <h4 class="mt-2 mb-4 pb-2 text-center">
+            <span class="font-weight-bold">You haven't ordered any tickets yet!</span>
+          </h4>
+          
+          <a class="btn btn-danger text-white" href="/movies">Go to movies</a>
+        </div>
+    </div>
+  </div>
+</div>
